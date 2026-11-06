@@ -23,6 +23,7 @@ where = ["src/py"]
 
 [tool.pytest.ini_options]
 testpaths = ["test/py/userconf_ymap_test"]
+pythonpath = ["src/py"]
 
 [tool.ruff]
 line-length = 100

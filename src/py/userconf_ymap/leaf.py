@@ -1,9 +1,11 @@
 
 class ConfigError(ValueError):
-    """A color, font, or size in argv or X resources is unusable."""
+    """An error in configuration loading or processing occured."""
 
-class RunTimeError(OSError): ""
+class RunTimeError:
+    """An error during processing occured."""
 
-class ContextError(RunTimeError): ""
+class ContextError(RunTimeError, OSError):
+    """An external error during processing occured."""
 
 # vim:fenc=utf-8

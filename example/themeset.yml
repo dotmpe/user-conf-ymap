@@ -1,0 +1,27 @@
+---
+profile: srgb-hex-names
+  
+colors:
+  i3wm_default:
+    0.  4c7899 Hexcolor__Zenith                 ~Pantone_5405 Pidgeon_Blue
+    1.  285577 Hexcolor__3am_in_Shibuya         ~Pantone_2955 Dark_blue_cyan Violet_blue
+    2.  2e9ef4 Hexcolor__Fresh_Blue_of_Bel_Air  ~Pantone_3005
+    3.  5f676a Hexcolor__Batman                 ~Pantone_424  Blue_grey
+    4.  484e50 Hexcolor__Cover_of_Night         ~Pantone_10   Graphite_grey
+    5.  333333 Hexcolor__Carbon                 ~Pantone_11   Black_grey
+
+    ...
+
+    # fg. ... foreground
+
+maps:
+  i3wm_client:
+    # class                  border bground text indicator child_border
+    client_focused:          {0.0} {1.1} {fg.1} {2.1}
+    client_focused:          {color00} {color01} {colorxxx} {color02}
+    client_focused_inactive: $i3wm_default5 $i3wm_default3 $fground $i3wm_default4 $i3wm_default3
+    client_unfocused:        $i3wm_default5 $i3wm_default6 $i3wm_default7 $i3wm_default8 $i3wm_default6
+    client_urgent:           $i3wm_default9 $i3wm_default10 $fground $i3wm_default10 $i3wm_default10
+    client_placeholder:      $bground $i3wm_default11 $fground $bground $i3wm_default11
+
+  ...
