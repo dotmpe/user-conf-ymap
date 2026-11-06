@@ -1,0 +1,9 @@
+build
+*.egg-info
+.local/cache
+__pycache__
+# Cleanable session files
+.*.sw[a-p]
+.*~*
+*DS_Store
+._.*

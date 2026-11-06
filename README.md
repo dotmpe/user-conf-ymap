@@ -1,48 +1,23 @@
-A tool to process configuration for other projects.
+A simple JSON loader and value renderer, using only py3 stdlib + `yq`.
 
-Hosts with `py3` and `yq` can easily process some user definitions into JSON
-and other formats. The exact structure and layering is owned externally, as
-is aggregating files with definitions and mappings. The process here supports
-building maps (ie. objects or dicts) from definition sets.
+- [x] DONE: merge settings according to [initial plan](doc/BRIEF.md)
+- [ ] TODO: fix help; docstrings and manual [User-Conf ymap UI](doc/TOOL_USERCONF_YMAP_CLI.md)
+- [ ] TODO: implement non-YAML path
+- [ ] TODO: testing
+- [ ] TODO: choose, set and follow project conventions
+- [ ] TODO: more complex configurable object resolver and filter components
 
-Sketch of a file myset.yaml with just one trivial key set:
-```yaml
-# The keys in the definitions are a signature for its kind, and its value can be
-# overruled by a second set (from another user or project specified file).
-# So these could be application defaults for a minimum or maximally customized
-# config, and more app defaults, or dist provided maps. Or it could be the sets
-# in a theme or profile for other organisations of tracking settings, etc.
+# Example
+To process a merge, import `user_conf_ymap.merge` and use `run_merge(definitions, placeholders)` on dictionaries.
 
-definitions:
-  myset:
-    key: 123
-    key2: true
+Or call the CLI:
+```bash
+uc-ymap merge example/myset.yml
+````
 
-maps:
-  myconfigA:
-    placeholderkey: "#{define.key|hex}"
-  myconfigB:
-    otherkey: "{define.key|int}"
-
-# The external project now has two maps it can render, for use in expansion of
-# configuration stanza's for example
+```
+{"placeholderkey": "#0x7b"}
+{"otherkey": "123", "secondkey": "1", "thirdkey": "123.45"}
 ```
 
-This basis gives a path to map both style and application definitions into
-signature sets. Outside of this project these can be used to coordinate both.
-
-The concern for this project is understand some value types and serializing
-filters. The YAML can filtered into JSON by external tools; by adding yq as
-an installation dependency it does not add a direct link to ruamel (Python's
-chosen but non-std YAML parser).
-
-The pipeline can be simple for now; the UI is CLI style, the filters are
-hardcoded and only the definitions and maps path are configurable.
-Later extensions for other processes will use other keys and types of objects.
-
-Suggested start to setup:
-
-- module: source at src/py/userconf_ymap/... 
-- frontend: executable at tool/py/exec/userconf_ymap with entrypoint for uc-ymap program
-
-Or whatever a new python project with TOML does to make an installable module and command name happen.
+See [myset.yml](example/myset.yml) at the examples/ folder for the inputs.

@@ -1,0 +1,16 @@
+---
+profile: settings
+
+definitions:
+  myset:
+    key: 123
+    key2: true
+    key3: 123.45
+
+maps:
+  myconfigA:
+    placeholderkey: "#{key|hex}"
+  myconfigB:
+    otherkey: "{key}"
+    secondkey: "{key2|bit}"
+    thirdkey: "{key3}"

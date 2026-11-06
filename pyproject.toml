@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "user-conf-ymap"
+version = "0.0.1-dev"
+description = "Processor for templated config in Python/JSON"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "B. van Berkum <dev@dotmpe.com>" }]
+dependencies = [ ]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
+
+[project.scripts]
+uc-ymap = "userconf_ymap.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src/py"]
+
+[tool.pytest.ini_options]
+testpaths = ["test/py/userconf_ymap_test"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
